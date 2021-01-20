@@ -34,10 +34,10 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
 		tableViewRight.translatesAutoresizingMaskIntoConstraints = false
         
 		contentView.addSubview(tableViewLeft)
-		contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .leftMargin, relatedBy: .equal, toItem: contentView, attribute: .leftMargin, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft!, attribute: .leftMargin, relatedBy: .equal, toItem: contentView, attribute: .leftMargin, multiplier: 1.0, constant: 0.0))
 		
 		contentView.addSubview(tableViewRight)
-		contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .rightMargin, relatedBy: .equal, toItem: contentView, attribute: .rightMargin, multiplier: 1.0, constant: 0.0))
+        contentView.addConstraint(NSLayoutConstraint(item: tableViewRight!, attribute: .rightMargin, relatedBy: .equal, toItem: contentView, attribute: .rightMargin, multiplier: 1.0, constant: 0.0))
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -79,12 +79,12 @@ open class SplitRowCell<L: RowType, R: RowType>: Cell<SplitRowValue<L.Cell.Value
 		guard let row = self.row as? _SplitRow<L,R> else{ return }
 		
 		if let height = self.height?(){
-			self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
-			self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
+            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft!, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
+            self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight!, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 1.0, constant: height))
 		}
 		
-		self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowLeftPercentage, constant: 0.0))
-		self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowRightPercentage, constant: 0.0))
+		self.contentView.addConstraint(NSLayoutConstraint(item: tableViewLeft!, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowLeftPercentage, constant: 0.0))
+		self.contentView.addConstraint(NSLayoutConstraint(item: tableViewRight!, attribute: .width, relatedBy: .equal, toItem: contentView, attribute: .width, multiplier: row.rowRightPercentage, constant: 0.0))
 	}
 	
 	private func rowCanBecomeFirstResponder(_ row: BaseRow?) -> Bool{
